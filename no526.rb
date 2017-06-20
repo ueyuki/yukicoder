@@ -1,15 +1,10 @@
-def fibonati(n, m)
-  if n == 1
-    return 0
-  end
+n, m = gets.split.map(&:to_i)
+i = 3
+num = [0, 0, 1]
 
-  if n == 2
-    return 1
-  end
-
-  return (fibonati(n-1, m) + fibonati(n-2, m)) % m
+while i <= n
+  num << num[i-1] + num[i-2]
+  i += 1
 end
 
-n, m = gets.split.map(&:to_i)
-
-puts fibonati(n, m)
+puts num[i-1] % m
