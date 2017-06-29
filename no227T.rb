@@ -1,5 +1,5 @@
 GET_NUMBERS = gets.split
-PAIR_STRING = GET_NUMBERS.group_by{&:to_i}.map { |k, v| v.size }.sort.to_s
+PAIR_STRING = GET_NUMBERS.group_by(&:to_i).map { |k, v| v.size }.sort.to_s
 
 answer = ""
 case PAIR_STRING
