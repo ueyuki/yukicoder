@@ -1,21 +1,20 @@
 n = gets.chomp.to_i
 a = gets.chomp.split.map(&:to_i)
+tmp = 0
 
-0.upto(n-2) |p| do
-  0.upto(n-1) |q| do
-    if a[p] > a[p+q]
-      a.swap!(p, p+q)
+1.upto(2*n-4) do |i|
+  1.upto(n-1) do |q|
+    if i >= q
+      p = i - q
+      if q > p
+        if a[p] > a[q]
+          tmp = a[p]
+          a[p] = a[q]
+          a[q] = tmp
+        end
+      end
     end
   end
 end
 
-puts a
-#for p in 0..n-2 do
-#  for q in 0..n-1
-#    if a[p] > a[p+q]
-#      a.swap!(p, p+q)
-#    end
-#  end
-#end
-
-
+puts a.join(' ')
