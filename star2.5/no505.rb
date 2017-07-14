@@ -1,36 +1,20 @@
 n = gets.chomp.to_i
 a = gets.chomp.split.map(&:to_i)
 
-plus = []
-diff = []
-multi = []
-divide = []
+data = []
 
+min = [a[0]]
 max = [a[0]]
 
 1.upto(n-1) do |i|
-  plus << max[i-1] + a[i]
-  diff << max[i-1] - a[i]
-  multi << max[i-1] * a[i]
   if a[i] != 0
-    divide << max[i-1] / a[i]
+    data << [max[i-1] + a[i], max[i-1] - a[i], max[i-1] * a[i], (max[i-1].to_f / a[i]).ceil, min[i-1] + a[i], min[i-1] - a[i], min[i-1] * a[i], (min[i-1].to_f / a[i]).ceil]
   else
-    divide << max[i-1]
-  end
-  
-  if plus[i-1] > diff[i-1]
-    max[i] = plus[i-1]
-  else
-    max[i] = diff[i-1]
+  data << [max[i-1] + a[i], max[i-1] - a[i], max[i-1] * a[i], 0, min[i-1] + a[i], min[i-1] - a[i], min[i-1] * a[i], 0]
   end
 
-  if max[i] < multi[i-1]
-    max[i] = multi[i-1]
-  end
-
-  if max[i] < divide[i-1]
-    max[i] = divide[i-1]
-  end
+  max << data[i-1].max
+  min << data[i-1].min
 end
 
 puts max[n-1]
