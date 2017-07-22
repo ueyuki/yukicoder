@@ -26,7 +26,7 @@ end
       lcm(a, b)
     }
 
-    tmp = (h / lc) - (l / lc)
+    tmp = (h / lc) - ((l - 1) / lc)
     if i % 2 == 0
       aunswer += tmp * (i * -1)
     else
