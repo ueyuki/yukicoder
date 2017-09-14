@@ -1,22 +1,16 @@
-n,d = gets.chomp.split.map(&:to_i)
-location = 't'
-income = 0
+n, d = gets.chomp.split.map(&:to_i)
+incomeT = 0
+incomeK = 0
 
-n.times do
-  t,k = gets.chomp.split.map(&:to_i)
-  if location == 't'
-    k = k - d
-  else
-    t = t - d
-  end
+t, k = gets.chomp.split.map(&:to_i)
 
-  if t > k
-    income += t
-    location = 't'
-  else
-    income += k
-    location = 'k'
-  end
+incomeT = [t]
+incomeK = [k - d]
+
+(n - 1).times do |i|
+  t, k = gets.chomp.split.map(&:to_i)
+  incomeT << t + ((incomeT[i] > incomeK[i] - d) ? incomeT[i] : incomeK[i] - d)
+  incomeK << k + ((incomeT[i] - d > incomeK[i]) ? incomeT[i] - d : incomeK[i])
 end
 
-puts income
+puts ((incomeT[n-1] > incomeK[n-1]) ? incomeT[n-1] : incomeK[n-1])
