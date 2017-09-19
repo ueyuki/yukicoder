@@ -1,16 +1,17 @@
-n = gets.chomp.to_i
+N = gets.chomp
 
-num7 = n.to_s.count('7')
-start = 0
+place = []
 
-1.upto(num7) do |i|
-  start += 10 ** (i-1)
+(N.length).times do |i|
+  (N[i] == '7') ? place << N.length - i : next
 end
 
-start.upto(n / 2) do |i| 
-  x = n - i
-  if ( i.to_s.count('7') == 0 && x.to_s.count('7') == 0 )
-    printf("%d %d\n", i, x)
-    exit
-  end
+a = 0
+
+place.each do |i|
+  a += 10 ** (i - 1)
 end
+
+b = N.to_i - a
+
+print("#{a}\s#{b}\n")
