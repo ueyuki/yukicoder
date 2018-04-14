@@ -14,8 +14,7 @@ int main()
   for (int i = 0; i < S.size(); i++)
   {
     sum += S[i] == 'A' ? 1 : -1; 
-    if (mp.count(sum)) ans = max(ans, i - mp[sum]);
-    else mp[sum] = i;
+    mp.count(sum) == 0 ? mp[sum] = i : ans = max(ans, i - mp[sum]);
   }
 
   printf("%d\n", ans);
