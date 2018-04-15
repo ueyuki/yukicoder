@@ -12,23 +12,11 @@ int main()
     int N;
     scanf("%d", &N);
 
-    if (N % 8 == 0 && N % 10 == 0)
-    {
-      printf("ikisugi\n");
-    }
-    else if (N % 8 == 0) 
-    {
-      printf("iki\n");
-    }
-    else if (N % 10 == 0) 
-    {
-      printf("sugi\n");
-    }
-    else
-    {
-      printf("%d\n", N / 3);
-    }
+    if (N % 8 == 0) printf("iki");
+    if (N % 10 == 0) printf("sugi");
+    if (!(N % 8 == 0 || N % 10 == 0)) printf("%d", N / 3);
 
+    printf("\n");
   }
 
   return 0;
